@@ -23,9 +23,19 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        var response = await _authenticationService.Login(request);
-
-        return Ok(response);
+        try
+        {
+            var token = await _authenticationService.Login(request);
+            // Console.WriteLine(request.Username);
+            // Console.WriteLine(request.Password);
+            SignInReponse response = new SignInReponse() {UserName = request.Username,Token = token};
+            
+            return Ok(response);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [AllowAnonymous]
@@ -35,8 +45,21 @@ public class UserController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        var response = await _authenticationService.Register(request);
+        try
+        {
+            var token = await _authenticationService.Register(request);
 
-        return Ok(response);
+            SignInReponse response = new SignInReponse() {UserName = request.Username,Token = token};
+
+            // Console.WriteLine(request.Username);
+            // Console.WriteLine(request.Password);
+            // Console.WriteLine(request.Email);
+            return Ok(response);
+        }
+        catch(Exception e){
+            return BadRequest(e.Message);
+        }
+
+
     }
 }

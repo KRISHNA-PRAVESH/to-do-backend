@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace UserAuthentication.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class firstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

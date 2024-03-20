@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace UserAuthentication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240223102645_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240224061757_firstMigration")]
+    partial class firstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
